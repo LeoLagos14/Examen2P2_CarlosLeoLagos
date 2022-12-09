@@ -62,6 +62,16 @@ public class GuardarPartida {
                 FileInputStream entrada= new FileInputStream(archivo);
                 ObjectInputStream objeto = new ObjectInputStream(entrada);
                 
+                try {
+                    while ((bananaSupretemp = (BananaSuprema)objeto.readObject()) != null) {                        
+                        listabSupremas.add(bananaSupretemp);
+                    }
+                     while ((bananaSubditemp = (BananasSubditas)objeto.readObject()) != null) {                        
+                        listabanansSub.add(bananaSubditemp);
+                    }
+                    
+                } catch (Exception e) {
+                }
                 objeto.close();
                 entrada.close();
             }            
@@ -76,7 +86,12 @@ public class GuardarPartida {
         try {
             fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
-            
+            for (BananaSuprema t : listabSupremas) {
+                bw.writeObject(t);
+            }
+            for (BananasSubditas b : listabanansSub) {
+                bw.writeObject(b);
+            }
             bw.flush();
         } catch (Exception ex) {
         } finally {
