@@ -5,6 +5,7 @@
  */
 package examen2p2_carlosleolagos;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
@@ -24,10 +25,10 @@ public class Principle extends javax.swing.JFrame {
         
         
         tablero = LlenarM();
+
         ImprimirM(tablero);
        
        
-        
     }
 
     /**
@@ -66,6 +67,11 @@ public class Principle extends javax.swing.JFrame {
         jButton_Cargar.setText("Cargar");
 
         jButton_Comenzar.setText("Comenzar");
+        jButton_Comenzar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_ComenzarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,6 +124,28 @@ public class Principle extends javax.swing.JFrame {
         gp.escribirArchivo();
     }//GEN-LAST:event_jButton_GuardarMouseClicked
 
+    private void jButton_ComenzarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_ComenzarMouseClicked
+        // TODO add your handling code here:
+        for (int i = 0; i < 33; i++) {
+            matriz += "*";
+        }
+        matriz += "\n";
+        for (int i = 0; i < 13; i++) {
+            matriz += "*";
+            for (int j = 0; j < 47; j++) {
+                matriz += " ";
+            }
+            matriz += "*";
+            matriz += "\n";
+        }
+        for (int i = 0; i < 33; i++) {
+            matriz += "*";
+        }
+        
+        jTextArea1.setText(matriz);
+        JOptionPane.showMessageDialog(null, "Solo queria que se imprimiera algo en el TA es algo");
+    }//GEN-LAST:event_jButton_ComenzarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -167,36 +195,42 @@ char bananaSuprema = '@';
 char bananaSubdita = 'X';
 char jugadores= 'O';
 Partida partida = new Partida();
+String matriz = "";
 
     public char[][] LlenarM() {
         char tmatriz[][] = new char[14][34];
         
         for (int w = 0; w < 14; w++) {
             for (int z = 0; z < 34; z++) {
-                if (w == 0 || w == 14 - 1) {
-                    System.out.print("* ");
+                if (w == 0 || w == 13) {
+                    tmatriz[w][z] = '*';
                 } else {
-                    if (z == 0 || z == 34 - 1) {
-                        System.out.print("* ");
+                    if (z == 0 || z == 33) {
+                        tmatriz[w][z] = '*';
                     } else {
-                        System.out.print("  ");
+                        tmatriz[w][z] = ' ';
                     }
                 }
             }
-            System.out.println();
+            
         }
+        tmatriz[5][5] = 'g';
         return tmatriz;
     }
 
 public void ImprimirM(char[][] matriz) {
-    tablero[5][5] = 'g';
+    
     for (int i = 0; i < matriz.length; i++) {
-        for (int j = 0; j < matriz[i].length; j++) {
+        for (int j = 0; j < matriz[0].length; j++) {
             System.out.print(" " + matriz[i][j] + " ");
         }
         System.out.println();
     }
 }//imprimir
 
+    public static void LlenarMatriz() {
+        
+        
 
+    }
 }

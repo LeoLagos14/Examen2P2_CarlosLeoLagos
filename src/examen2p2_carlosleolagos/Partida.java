@@ -6,6 +6,7 @@
 package examen2p2_carlosleolagos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,25 +14,27 @@ import java.io.Serializable;
  */
 public class Partida implements Serializable{
     
-    char[][] tablero = new char[13][33];
+    ArrayList<char[][]> listaMatrices = new ArrayList();
     private static final long SerialVersionUID=555L;
     
     public Partida() {
     }
 
-    public char[][] getTablero() {
-        return tablero;
+    public ArrayList<char[][]> getListaMatrices() {
+        return listaMatrices;
     }
 
-    public void setTablero(char[][] tablero) {
-        this.tablero = tablero;
+    public void setListaMatrices(ArrayList<char[][]> listaMatrices) {
+        this.listaMatrices = listaMatrices;
     }
 
     @Override
     public String toString() {
-        return "tablero=" + tablero;
+        return "listaMatrices=" + listaMatrices;
     }
 
+    
+    
    
     
     
