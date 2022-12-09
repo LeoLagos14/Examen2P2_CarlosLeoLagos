@@ -11,8 +11,17 @@ package examen2p2_carlosleolagos;
  */
 public class Hilo implements Runnable{
 
+    private char[][] tablero;
+
+    public Hilo(char[][] tablero) {
+        this.tablero = tablero;
+    }
+    
+    
    public void run(){
-       
+       while (true) {           
+           
+       }
    }
     
-}
+}//fin clase
