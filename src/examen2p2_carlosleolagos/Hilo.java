@@ -12,6 +12,7 @@ package examen2p2_carlosleolagos;
 public class Hilo implements Runnable{
 
     private char[][] tablero;
+    private static final long SerialVersionUID=555L;
 
     public Hilo(char[][] tablero) {
         this.tablero = tablero;

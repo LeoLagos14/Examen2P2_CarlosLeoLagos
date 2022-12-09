@@ -5,14 +5,17 @@
  */
 package examen2p2_carlosleolagos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author clago
  */
-public class Partida {
+public class Partida implements Serializable{
     
     char[][] tablero = new char[13][33];
-
+    private static final long SerialVersionUID=555L;
+    
     public Partida() {
     }
 
@@ -26,7 +29,7 @@ public class Partida {
 
     @Override
     public String toString() {
-        return "Partida{" + "tablero=" + tablero + '}';
+        return "tablero=" + tablero;
     }
 
    

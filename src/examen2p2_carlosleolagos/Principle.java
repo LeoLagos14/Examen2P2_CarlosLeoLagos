@@ -5,6 +5,8 @@
  */
 package examen2p2_carlosleolagos;
 
+import javax.swing.JTextArea;
+
 /**
  *
  * @author clago
@@ -16,11 +18,14 @@ public class Principle extends javax.swing.JFrame {
      */
     public Principle() {
         initComponents();
+        this.setLocationRelativeTo(null);
         
         tablero = new char[13][33];
         
+        
         tablero = LlenarM();
         ImprimirM(tablero);
+       
        
         
     }
@@ -52,6 +57,11 @@ public class Principle extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton_Guardar.setText("Guardar");
+        jButton_Guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_GuardarMouseClicked(evt);
+            }
+        });
 
         jButton_Cargar.setText("Cargar");
 
@@ -99,6 +109,15 @@ public class Principle extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_GuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_GuardarMouseClicked
+        // TODO add your handling code here:
+        
+        GuardarPartida gp = new GuardarPartida("./Partidas.porfi");
+        gp.cargarArchivo();
+        gp.setPartida(partida);
+        gp.escribirArchivo();
+    }//GEN-LAST:event_jButton_GuardarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -144,9 +163,14 @@ public class Principle extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 char[][] tablero;
+char bananaSuprema = '@';
+char bananaSubdita = 'X';
+char jugadores= 'O';
+Partida partida = new Partida();
 
     public char[][] LlenarM() {
         char tmatriz[][] = new char[14][34];
+        
         for (int w = 0; w < 14; w++) {
             for (int z = 0; z < 34; z++) {
                 if (w == 0 || w == 14 - 1) {
@@ -165,6 +189,7 @@ char[][] tablero;
     }
 
 public void ImprimirM(char[][] matriz) {
+    tablero[5][5] = 'g';
     for (int i = 0; i < matriz.length; i++) {
         for (int j = 0; j < matriz[i].length; j++) {
             System.out.print(" " + matriz[i][j] + " ");
@@ -172,5 +197,6 @@ public void ImprimirM(char[][] matriz) {
         System.out.println();
     }
 }//imprimir
+
 
 }

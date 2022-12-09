@@ -11,16 +11,18 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author clago
  */
-public class GuardarPartida {
+public class GuardarPartida implements Serializable{
     
     private ArrayList<Partida> listaPartida = new ArrayList();
     private File archivo = null;
+    private static final long SerialVersionUID=555L;
 
     public GuardarPartida(String path) {
         archivo = new File(path);
@@ -40,6 +42,9 @@ public class GuardarPartida {
 
     public void setArchivo(File archivo) {
         this.archivo = archivo;
+    }
+    public void setPartida(Partida pa){
+        listaPartida.add(pa);
     }
     
     public void cargarArchivo() {
