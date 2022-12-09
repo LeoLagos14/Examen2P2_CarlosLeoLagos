@@ -19,6 +19,10 @@ public class Principle extends javax.swing.JFrame {
         
         tablero = new char[13][33];
         
+        tablero = LlenarM();
+        ImprimirM(tablero);
+       
+        
     }
 
     /**
@@ -141,16 +145,24 @@ public class Principle extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 char[][] tablero;
 
-public char[][] LlenarM(int x,int y){
-    char tmatriz[][]=new char[x][y];
-        for(int i=0;i<x;i++){
-            for (int j = 0; j < y; j++) {
-                
-                tmatriz[i][j]='_';
+    public char[][] LlenarM() {
+        char tmatriz[][] = new char[14][34];
+        for (int w = 0; w < 14; w++) {
+            for (int z = 0; z < 34; z++) {
+                if (w == 0 || w == 14 - 1) {
+                    System.out.print("* ");
+                } else {
+                    if (z == 0 || z == 34 - 1) {
+                        System.out.print("* ");
+                    } else {
+                        System.out.print("  ");
+                    }
+                }
             }
+            System.out.println();
         }
-    return tmatriz;
-}
+        return tmatriz;
+    }
 
 public void ImprimirM(char[][] matriz) {
     for (int i = 0; i < matriz.length; i++) {
