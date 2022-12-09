@@ -5,6 +5,7 @@
  */
 package examen2p2_carlosleolagos;
 
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
@@ -20,6 +21,7 @@ public class Principle extends javax.swing.JFrame {
     public Principle() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jFrame1.setSize(500, 400);
         
         tablero = new char[13][33];
         
@@ -40,6 +42,11 @@ public class Principle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -47,6 +54,32 @@ public class Principle extends javax.swing.JFrame {
         jButton_Guardar = new javax.swing.JButton();
         jButton_Cargar = new javax.swing.JButton();
         jButton_Comenzar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Un placer, espero que tengas mucho exito en tu carrera!!");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 430, 20));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel5.setText("MUCHO LOVE JAMESSSS:)");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 200, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/examen2p2_carlosleolagos/OIP (1).jpg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 300));
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +106,13 @@ public class Principle extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("TU REGALO JAMES:)");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,11 +134,13 @@ public class Principle extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                                 .addComponent(jButton_Comenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(36, Short.MAX_VALUE))
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addComponent(jButton1)
+                .addGap(2, 2, 2)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,7 +168,8 @@ public class Principle extends javax.swing.JFrame {
 
     private void jButton_ComenzarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_ComenzarMouseClicked
         // TODO add your handling code here:
-        for (int i = 0; i < 33; i++) {
+        try {
+            for (int i = 0; i < 33; i++) {
             matriz += "*";
         }
         matriz += "\n";
@@ -144,7 +187,20 @@ public class Principle extends javax.swing.JFrame {
         
         jTextArea1.setText(matriz);
         JOptionPane.showMessageDialog(null, "Solo queria que se imprimiera algo en el TA es algo");
+        } catch (Exception e) {
+        }
+        
+       
     }//GEN-LAST:event_jButton_ComenzarMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        jFrame1.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Ya hablando en serio... \n"
+                + "Mucho gusto y de verdad Exitos en todo lo que te falte!");
+        
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -182,10 +238,16 @@ public class Principle extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_Cargar;
     private javax.swing.JButton jButton_Comenzar;
     private javax.swing.JButton jButton_Guardar;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jT_Instrucciones;
     private javax.swing.JTextArea jTextArea1;
@@ -196,6 +258,8 @@ char bananaSubdita = 'X';
 char jugadores= 'O';
 Partida partida = new Partida();
 String matriz = "";
+Random r = new Random();
+
 
     public char[][] LlenarM() {
         char tmatriz[][] = new char[14][34];
@@ -214,7 +278,16 @@ String matriz = "";
             }
             
         }
-        tmatriz[5][5] = 'g';
+        
+        int a = 1+r.nextInt(13);
+        int b = 1+r.nextInt(13);//AQUI VALIDADO 
+        int c = 1+r.nextInt(33);
+        int d = 1+r.nextInt(33);
+        
+        tmatriz[a][c] = bananaSuprema;
+        tmatriz[b][d] = bananaSubdita;
+        
+        
         return tmatriz;
     }
 
@@ -228,9 +301,5 @@ public void ImprimirM(char[][] matriz) {
     }
 }//imprimir
 
-    public static void LlenarMatriz() {
-        
-        
-
-    }
+    
 }
