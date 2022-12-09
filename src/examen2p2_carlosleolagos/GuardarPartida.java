@@ -19,29 +19,19 @@ import java.util.ArrayList;
  */
 public class GuardarPartida {
     
-    private ArrayList<BananaSuprema> listabSupremas = new ArrayList();
-    private ArrayList<BananasSubditas> listabanansSub = new ArrayList();
+    private ArrayList<Partida> listaPartida = new ArrayList();
     private File archivo = null;
 
     public GuardarPartida(String path) {
         archivo = new File(path);
     }
 
-    public ArrayList<BananaSuprema> getListabSupremas() {
-        return listabSupremas;
+    public ArrayList<Partida> getListaPartida() {
+        return listaPartida;
     }
 
-    public void setListabSupremas(ArrayList<BananaSuprema> listabSupremas) {
-        this.listabSupremas = listabSupremas;
-    }
-
-
-    public ArrayList<BananasSubditas> getListabanansSub() {
-        return listabanansSub;
-    }
-
-    public void setListabanansSub(ArrayList<BananasSubditas> listabanansSub) {
-        this.listabanansSub = listabanansSub;
+    public void setListaPartida(ArrayList<Partida> listaPartida) {
+        this.listaPartida = listaPartida;
     }
 
     public File getArchivo() {
@@ -51,26 +41,20 @@ public class GuardarPartida {
     public void setArchivo(File archivo) {
         this.archivo = archivo;
     }
-
-     public void cargarArchivo() {
+    
+    public void cargarArchivo() {
         try {            
-            listabSupremas = new ArrayList();
-            listabanansSub = new ArrayList();
-            BananaSuprema bananaSupretemp;
-            BananasSubditas bananaSubditemp;
+            listaPartida = new ArrayList();
+            Partida partidaTemp;
             if (archivo.exists()) {
-                FileInputStream entrada= new FileInputStream(archivo);
+                FileInputStream entrada = new FileInputStream(archivo);
                 ObjectInputStream objeto = new ObjectInputStream(entrada);
-                
                 try {
-                    while ((bananaSupretemp = (BananaSuprema)objeto.readObject()) != null) {                        
-                        listabSupremas.add(bananaSupretemp);
+                    while ((partidaTemp = (Partida) objeto.readObject()) != null) {
+                        listaPartida.add(partidaTemp);
                     }
-                     while ((bananaSubditemp = (BananasSubditas)objeto.readObject()) != null) {                        
-                        listabanansSub.add(bananaSubditemp);
-                    }
+                } catch (EOFException e) {
                     
-                } catch (Exception e) {
                 }
                 objeto.close();
                 entrada.close();
@@ -79,18 +63,15 @@ public class GuardarPartida {
             ex.printStackTrace();
         }
     }
-
+    
     public void escribirArchivo() {
         FileOutputStream fw = null;
         ObjectOutputStream bw = null;
         try {
             fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
-            for (BananaSuprema t : listabSupremas) {
+            for (Partida t : listaPartida) {
                 bw.writeObject(t);
-            }
-            for (BananasSubditas b : listabanansSub) {
-                bw.writeObject(b);
             }
             bw.flush();
         } catch (Exception ex) {
@@ -102,6 +83,7 @@ public class GuardarPartida {
             }
         }
     }
+    
     
 
     
